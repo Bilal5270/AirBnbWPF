@@ -1,0 +1,36 @@
+﻿<Window x:Class="AirBnbWPF.Views.Properties"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vms="clr-namespace:AirBnbWPF.ViewModels"
+        mc:Ignorable="d"
+        Title="PropertiesWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vms:PropertiesViewModel/>
+    </Window.DataContext>
+
+    <Grid Background="#FFA1A1A0">
+        <TextBox HorizontalAlignment="Left" Margin="145,88,0,0" TextWrapping="Wrap" Text="{Binding Property.Address}" VerticalAlignment="Top" Width="120"/>
+
+
+        <Button Command="{Binding SaveClick}" Content="Save changes" HorizontalAlignment="Left" Margin="438,192,0,0" VerticalAlignment="Top" FontSize="16" Click="Button_Click" Background="#FF4DDC26" Height="29" Width="106"/>
+        <TextBox HorizontalAlignment="Left" Margin="145,134,0,0" TextWrapping="Wrap" Text="{Binding Property.City}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="145,179,0,0" TextWrapping="Wrap" Text="{Binding Property.PostalCode}" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Margin="145,217,0,0" TextWrapping="Wrap" Text="{Binding Property.AmountOfRooms}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="145,264,0,0" TextWrapping="Wrap" Text="{Binding Property.PricePerNight}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Adres:" HorizontalAlignment="Left" Margin="105,86,0,0" VerticalAlignment="Top" Height="22" Width="40" FontSize="11"/>
+        <Label Content="City:" HorizontalAlignment="Left" Margin="110,128,0,0" VerticalAlignment="Top" Height="30" Width="35" FontSize="11"/>
+        <Label Content="Postal code:" HorizontalAlignment="Left" Margin="77,177,0,0" VerticalAlignment="Top" Height="22" Width="68" FontSize="11"/>
+        <Label Content="Amount of rooms:" HorizontalAlignment="Left" Margin="48,213,0,0" VerticalAlignment="Top" Height="22" Width="108" FontSize="11"/>
+        <Label Content="Price per night:" HorizontalAlignment="Left" Margin="64,260,0,0" VerticalAlignment="Top" Height="26" Width="92" FontSize="11"/>
+        <TextBox HorizontalAlignment="Left" Margin="431,86,0,0" TextWrapping="Wrap" Text="{Binding Property.Landlord.FirstName}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Landlord's firstname:" HorizontalAlignment="Left" Margin="318,82,0,0" VerticalAlignment="Top" Height="22" Width="119" FontSize="11" RenderTransformOrigin="0.09,0.756"/>
+        <Label Content="Landlord's lastname:" HorizontalAlignment="Left" Margin="318,111,0,0" VerticalAlignment="Top" Height="22" Width="119" FontSize="11"/>
+        <TextBox HorizontalAlignment="Left" Margin="431,115,0,0" TextWrapping="Wrap" Text="{Binding Property.Landlord.LastName}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Landlord's id:" HorizontalAlignment="Left" Margin="355,143,0,0" VerticalAlignment="Top" Height="22" Width="82" FontSize="11"/>
+        <TextBox HorizontalAlignment="Left" Margin="431,147,0,0" TextWrapping="Wrap" Text="{Binding Property.Landlord.Id}" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1"/>
+
+
+    </Grid>
+</Window>

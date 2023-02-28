@@ -1,0 +1,30 @@
+﻿<Window x:Class="AirBnbWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vms="clr-namespace:AirBnbWPF.ViewModels" xmlns:vms1="clr-namespace:AirBnbWPF.ViewModels" 
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="991">
+    <Window.DataContext>
+        <vms:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Grid HorizontalAlignment="Center" Width="801">
+        <Label Content="Voornaam" HorizontalAlignment="Left" Margin="429,87,0,0" VerticalAlignment="Top" Width="138" Background="#FFDF9797" Foreground="White" HorizontalContentAlignment="Right"/>
+        <Label Content="Achternaam" HorizontalAlignment="Left" Margin="429,130,0,0" VerticalAlignment="Top" Width="138" Background="#FFDF9797" Foreground="White" HorizontalContentAlignment="Right"/>
+        <TextBox Text="{Binding SelectedLandlord.FirstName}" x:Name="FirstNameBox" HorizontalAlignment="Left" Margin="572,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+        <TextBox Text="{Binding SelectedLandlord.LastName}" x:Name="LastNameBox" HorizontalAlignment="Left" Margin="572,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+        <ListBox ItemsSource="{Binding SelectedLandlord.Properties}" SelectedItem="{Binding SelectedProperty}" DisplayMemberPath="Address" Margin="246,74,387,92"/>
+        <Button Command="{Binding NewStudentClick}" Content="Add Student" HorizontalAlignment="Left" Margin="429,182,0,0" VerticalAlignment="Top"/>
+        <Button Command="{Binding ResetStudentClick}" Content="Reset Student" HorizontalAlignment="Left" Margin="527,182,0,0" VerticalAlignment="Top"/>
+        <Button Command="{Binding OpenPropertyClick}" Content="Open property" Margin="719,339,-86,0" VerticalAlignment="Top" Background="#FF48E23D" FontSize="20" Foreground="White" FontWeight="Bold" Click="Button_Click" Height="40"/>
+        <ListBox ItemsSource="{Binding AllLandlords}" SelectedItem="{Binding SelectedLandlord}" DisplayMemberPath="FirstName" Margin="32,74,601,92" SelectionChanged="ListBox_SelectionChanged_2"/>
+        <Label Content="Alle Landlords" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top"/>
+        <Label Content="Properties" HorizontalAlignment="Left" Margin="246,43,0,0" VerticalAlignment="Top"/>
+
+        <ListBox ItemsSource="{Binding AllProperties}" SelectedItem="{Binding SelectedProperty}" DisplayMemberPath="Address" Margin="719,74,-86,0" SelectionChanged="ListBox_SelectionChanged_1" Height="268" VerticalAlignment="Top" RenderTransformOrigin="0.829,0.521"/>
+        <Button Content="LINK PROPERTY!" Command="{Binding LinkPropertyClick}" HorizontalAlignment="Left" Margin="527,290,0,0" VerticalAlignment="Top"/>
+        <Button Command="{Binding SaveClick}" Content="SAVE" HorizontalAlignment="Left" Margin="464,367,0,0" VerticalAlignment="Top" FontSize="22"/>
+    </Grid>
+</Window>

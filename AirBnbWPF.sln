@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirBnbWPF", "AirBnbWPF\AirBnbWPF.csproj", "{2B995866-FB86-41EA-9B3F-542592422324}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B995866-FB86-41EA-9B3F-542592422324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B995866-FB86-41EA-9B3F-542592422324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B995866-FB86-41EA-9B3F-542592422324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B995866-FB86-41EA-9B3F-542592422324}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A5DB67C-29B6-46CC-A8CE-107A3FCEBB06}
+	EndGlobalSection
+EndGlobal
