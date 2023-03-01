@@ -11,6 +11,7 @@ namespace AirBnbWPF.ViewModels
     {
         private Property _property;
         public Property Property { get => _property; set { _property = value; Notify("Property"); } }
+       
         public AirBnbContext Db { get; set; }
         public ICommand SaveClick { get; set; }
 

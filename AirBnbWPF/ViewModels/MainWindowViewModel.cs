@@ -26,20 +26,21 @@ namespace AirBnbWPF.ViewModels
         public ObservableCollection<Landlord> AllLandlords { get; set; }
 
         public ObservableCollection<Reservation> AllReservations { get; set; }
-        public ICommand NewUserClick { get; set; }
-        public ICommand ResetUserClick { get; set; }
+        public ICommand NewPropertyClick { get; set; }
+        public ICommand DeletePropertyClick { get; set; }
         public ICommand OpenPropertyClick { get; set; }
         public ICommand LinkPropertyClick { get; set; }
+        public ICommand UnlinkPropertyClick { get; set; }
         public ICommand SaveClick { get; set; }
 
         AirBnbContext _db = new AirBnbContext();
 
         public MainWindowViewModel()
         {
-            _db.Users.Load();
+            _db.Users.Include(c => c.Reservations).Load();
             AllUsers = _db.Users.Local.ToObservableCollection();
 
-            _db.Reservations.Load();
+            _db.Reservations.Include(c => c.User).Load();
             AllReservations = _db.Reservations.Local.ToObservableCollection();
             
             _db.Landlords.Include(c => c.Properties).Load();
@@ -51,23 +52,22 @@ namespace AirBnbWPF.ViewModels
 
 
 
-            //NewUserClick = new RelayCommand(AddNewStudent);
-            //ResetUserClick = new RelayCommand(ResetStudent);
+            NewPropertyClick = new RelayCommand(AddNewProperty);
+            DeletePropertyClick = new RelayCommand(DeleteProperty);
             OpenPropertyClick = new RelayCommand(OpenProperty);
+            UnlinkPropertyClick = new RelayCommand(UnlinkProperty);
             LinkPropertyClick = new RelayCommand(LinkProperty);
             SaveClick = new RelayCommand(Save);
         }
 
-        //private void AddNewStudent()
-        //{
-        //    AllStudents.Add(new Student
-        //    {
-        //        FirstName = "NEW",
-        //        LastName = "STUDENT",
-        //        Number = "aaaa",
-        //        Age = 44
-        //    });
-        //}
+        private void AddNewProperty()
+        {
+            AllProperties.Add(new Property
+            {
+                Address = "NEW PROPERTY",
+                Landlord = SelectedLandlord
+            });
+        }
 
         private void LinkProperty()
         {
@@ -83,15 +83,15 @@ namespace AirBnbWPF.ViewModels
         {
 
             SelectedLandlord.Properties.Remove(SelectedProperty);
-
+            
+                
 
         }
 
-        //private void ResetStudent()
-        //{
-        //    SelectedUser.FirstName = "-----------";
-        //    SelectedUser.LastName = "-----------";
-        //}
+        private void DeleteProperty()
+        {
+            _db.Remove(SelectedProperty);
+        }
 
         private void Save()
         {
@@ -105,8 +105,11 @@ namespace AirBnbWPF.ViewModels
 
 
 
+
+
             ((PropertiesViewModel)popup.DataContext).Property = SelectedProperty;
             ((PropertiesViewModel)popup.DataContext).Db = _db;
+
         }
     }
 }

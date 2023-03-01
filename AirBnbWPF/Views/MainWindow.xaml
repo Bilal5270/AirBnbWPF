@@ -11,20 +11,67 @@
     </Window.DataContext>
 
     <Grid HorizontalAlignment="Center" Width="801">
-        <Label Content="Voornaam" HorizontalAlignment="Left" Margin="429,87,0,0" VerticalAlignment="Top" Width="138" Background="#FFDF9797" Foreground="White" HorizontalContentAlignment="Right"/>
-        <Label Content="Achternaam" HorizontalAlignment="Left" Margin="429,130,0,0" VerticalAlignment="Top" Width="138" Background="#FFDF9797" Foreground="White" HorizontalContentAlignment="Right"/>
-        <TextBox Text="{Binding SelectedLandlord.FirstName}" x:Name="FirstNameBox" HorizontalAlignment="Left" Margin="572,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
-        <TextBox Text="{Binding SelectedLandlord.LastName}" x:Name="LastNameBox" HorizontalAlignment="Left" Margin="572,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
-        <ListBox ItemsSource="{Binding SelectedLandlord.Properties}" SelectedItem="{Binding SelectedProperty}" DisplayMemberPath="Address" Margin="246,74,387,92"/>
-        <Button Command="{Binding NewStudentClick}" Content="Add Student" HorizontalAlignment="Left" Margin="429,182,0,0" VerticalAlignment="Top"/>
-        <Button Command="{Binding ResetStudentClick}" Content="Reset Student" HorizontalAlignment="Left" Margin="527,182,0,0" VerticalAlignment="Top"/>
-        <Button Command="{Binding OpenPropertyClick}" Content="Open property" Margin="719,339,-86,0" VerticalAlignment="Top" Background="#FF48E23D" FontSize="20" Foreground="White" FontWeight="Bold" Click="Button_Click" Height="40"/>
-        <ListBox ItemsSource="{Binding AllLandlords}" SelectedItem="{Binding SelectedLandlord}" DisplayMemberPath="FirstName" Margin="32,74,601,92" SelectionChanged="ListBox_SelectionChanged_2"/>
-        <Label Content="Alle Landlords" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top"/>
-        <Label Content="Properties" HorizontalAlignment="Left" Margin="246,43,0,0" VerticalAlignment="Top"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="163*"/>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="561*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding SelectedLandlord.Properties}" SelectedItem="{Binding SelectedProperty}" DisplayMemberPath="Address" Margin="81,74,545,92" Grid.ColumnSpan="3"/>
+        <Button Command="{Binding NewPropertyClick}" Content="Add property" HorizontalAlignment="Left" Margin="515,404,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Button Command="{Binding DeletePropertyClick}" Content="Remove" HorizontalAlignment="Left" Margin="95,342,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="-0.504,0.217" Height="29" Width="89" Background="#FFFB0000" Click="Button_Click_2"/>
+        <Button Command="{Binding OpenPropertyClick}" Content="Edit" Margin="16,342,466,63" Background="#FF48E23D" Foreground="White" FontWeight="Bold" Click="Button_Click" Grid.Column="2"/>
+        <ListBox Margin="-86,74,81,92" ItemsSource="{Binding AllLandlords}" SelectedItem="{Binding SelectedLandlord}" Foreground="Black" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="FirstName"/>
+                                <Binding Path="LastName"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Content="All Landlords" HorizontalAlignment="Left" Margin="-86,48,0,0" VerticalAlignment="Top" Background="#FF403E3E" Width="168" Foreground="#FFFFF6F6"/>
+        <Label Content="Properties for selected landlord" HorizontalAlignment="Left" Margin="82,48,0,0" VerticalAlignment="Top" Width="174" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.ColumnSpan="3"/>
 
-        <ListBox ItemsSource="{Binding AllProperties}" SelectedItem="{Binding SelectedProperty}" DisplayMemberPath="Address" Margin="719,74,-86,0" SelectionChanged="ListBox_SelectionChanged_1" Height="268" VerticalAlignment="Top" RenderTransformOrigin="0.829,0.521"/>
-        <Button Content="LINK PROPERTY!" Command="{Binding LinkPropertyClick}" HorizontalAlignment="Left" Margin="527,290,0,0" VerticalAlignment="Top"/>
-        <Button Command="{Binding SaveClick}" Content="SAVE" HorizontalAlignment="Left" Margin="464,367,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <ListBox ItemsSource="{Binding AllProperties}" SelectedItem="{Binding SelectedProperty}" DisplayMemberPath="Address" Margin="16,74,377,0" SelectionChanged="ListBox_SelectionChanged_1" Height="268" VerticalAlignment="Top" RenderTransformOrigin="0.829,0.521" Grid.Column="2"/>
+        <Button Content="LINK PROPERTY!" Command="{Binding LinkPropertyClick}" HorizontalAlignment="Left" Margin="445,399,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Button Command="{Binding SaveClick}" Content="SAVE" HorizontalAlignment="Left" Margin="227,395,0,0" VerticalAlignment="Top" FontSize="22" Grid.Column="2" Background="#FF25CE09" Foreground="White" FontWeight="Bold"/>
+        <Label Content="All properties" Margin="16,48,377,0" VerticalAlignment="Top" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.Column="2"/>
+        <Button Content="UNLINK PROPERTY!" Command="{Binding UnlinkPropertyClick}" HorizontalAlignment="Left" Margin="332,390,0,0" VerticalAlignment="Top" Grid.Column="2" Click="Button_Click_1"/>
+        <Label Content="All Users" HorizontalAlignment="Left" Margin="184,48,0,0" VerticalAlignment="Top" Background="#FF403E3E" Width="168" Foreground="#FFFFF6F6" Grid.Column="2"/>
+        <Label Content="{Binding SelectedUser.FirstName}" HorizontalAlignment="Left" Margin="352,48,0,0" VerticalAlignment="Top" Background="#FF403E3E" Width="168" Foreground="#FFFFF6F6" Grid.Column="2" Height="26" Opacity="0.99"/>
+        <ListBox Margin="184,74,209,92" ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged_3" Grid.Column="2" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="FirstName"/>
+                                <Binding Path="LastName"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox Margin="352,74,41,92" ItemsSource="{Binding SelectedUser.Reservations}" SelectedItem="{Binding SelectedReservation}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged_3" Grid.Column="2" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}Reservation {0} {1} | {2}">
+                                <Binding Path="Id"/>
+                                <Binding Path="StartDate"/>
+                                <Binding Path="EndDate"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
