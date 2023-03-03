@@ -17,9 +17,8 @@
             <ColumnDefinition Width="561*"/>
         </Grid.ColumnDefinitions>
         <ListBox ItemsSource="{Binding SelectedLandlord.Properties}" SelectedItem="{Binding SelectedProperty}" DisplayMemberPath="Address" Margin="81,74,545,92" Grid.ColumnSpan="3"/>
-        <Button Command="{Binding NewPropertyClick}" Content="Add property" HorizontalAlignment="Left" Margin="515,404,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Button Command="{Binding NewPropertyClick}" Content="Add property" HorizontalAlignment="Left" Margin="116,384,0,0" VerticalAlignment="Top" Grid.Column="2"/>
         <Button Command="{Binding DeletePropertyClick}" Content="Remove" HorizontalAlignment="Left" Margin="95,342,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="-0.504,0.217" Height="29" Width="89" Background="#FFFB0000" Click="Button_Click_2"/>
-        <Button Command="{Binding OpenPropertyClick}" Content="Edit" Margin="16,342,466,63" Background="#FF48E23D" Foreground="White" FontWeight="Bold" Click="Button_Click" Grid.Column="2"/>
         <ListBox Margin="-86,74,81,92" ItemsSource="{Binding AllLandlords}" SelectedItem="{Binding SelectedLandlord}" Foreground="Black" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -42,9 +41,9 @@
         <Button Command="{Binding SaveClick}" Content="SAVE" HorizontalAlignment="Left" Margin="227,395,0,0" VerticalAlignment="Top" FontSize="22" Grid.Column="2" Background="#FF25CE09" Foreground="White" FontWeight="Bold"/>
         <Label Content="All properties" Margin="16,48,377,0" VerticalAlignment="Top" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.Column="2"/>
         <Button Content="UNLINK PROPERTY!" Command="{Binding UnlinkPropertyClick}" HorizontalAlignment="Left" Margin="332,390,0,0" VerticalAlignment="Top" Grid.Column="2" Click="Button_Click_1"/>
-        <Label Content="All Users" HorizontalAlignment="Left" Margin="184,48,0,0" VerticalAlignment="Top" Background="#FF403E3E" Width="168" Foreground="#FFFFF6F6" Grid.Column="2"/>
-        <Label Content="{Binding SelectedUser.FirstName}" HorizontalAlignment="Left" Margin="352,48,0,0" VerticalAlignment="Top" Background="#FF403E3E" Width="168" Foreground="#FFFFF6F6" Grid.Column="2" Height="26" Opacity="0.99"/>
-        <ListBox Margin="184,74,209,92" ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged_3" Grid.Column="2" >
+        <Label Content="All Users" HorizontalAlignment="Left" Margin="184,48,0,0" VerticalAlignment="Top" Background="#FF403E3E" Width="137" Foreground="#FFFFF6F6" Grid.Column="2"/>
+        <Label Content="All reservations for selected User" HorizontalAlignment="Left" Margin="321,48,0,0" VerticalAlignment="Top" Background="#FF403E3E" Width="182" Foreground="#FFFFF6F6" Grid.Column="2" Height="26" Opacity="0.99"/>
+        <ListBox Margin="184,74,240,92" ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged_3" Grid.Column="2" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -58,7 +57,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Margin="352,74,41,92" ItemsSource="{Binding SelectedUser.Reservations}" SelectedItem="{Binding SelectedReservation}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged_3" Grid.Column="2" >
+        <ListBox Margin="321,74,59,92" ItemsSource="{Binding SelectedUser.Reservations}" SelectedItem="{Binding SelectedReservation}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged_3" Grid.Column="2" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -73,5 +72,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Command="{Binding OpenPropertyClick}" Content="Edit" HorizontalAlignment="Left" Margin="16,342,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="-0.504,0.217" Height="29" Width="79" Background="#FF48E23D" Click="Button_Click_2" Foreground="White"/>
+        <Button Command="{Binding OpenLandlordClick}" Content="Edit" HorizontalAlignment="Left" Margin="-86,342,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.504,0.217" Height="29" Width="79" Background="#FF48E23D" Click="Button_Click_2" Foreground="White"/>
+        <Button Command="{Binding DeletePropertyClick}" Content="Remove" Margin="-7,342,81,0" VerticalAlignment="Top" RenderTransformOrigin="-0.504,0.217" Height="29" Background="#FFFB0000" Click="Button_Click_2"/>
     </Grid>
 </Window>

@@ -17,9 +17,9 @@ namespace AirBnbWPF.Views
     /// <summary>
     /// Interaction logic for Properties.xaml
     /// </summary>
-    public partial class Properties : Window
+    public partial class PropertiesView : Window
     {
-        public Properties()
+        public PropertiesView()
         {
             InitializeComponent();
         }
