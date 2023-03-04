@@ -45,8 +45,8 @@ namespace AirBnbWPF.Model
             );
 
             modelBuilder.Entity<Landlord>().HasData(
-                new { FirstName = "Karim", LastName = "NoClue", Id = 1},
-                new { FirstName = "Boze", LastName = "Verhuurder", Id = 2 }
+                new { FirstName = "Karim", LastName = "Ayachi", Id = 1},
+                new { FirstName = "Yousry", LastName = "Yousef", Id = 2 }
 
             );
 
