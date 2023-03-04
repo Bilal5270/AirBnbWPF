@@ -18,7 +18,7 @@
         <TextBox HorizontalAlignment="Left" Margin="115,88,0,0" TextWrapping="Wrap" Text="{Binding Landlord.FirstName}" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
 
 
-        <Button Command="{Binding SaveClick}" Content="Save changes" HorizontalAlignment="Left" Margin="526,395,0,0" VerticalAlignment="Top" FontSize="16" Click="Button_Click" Background="#FF4DDC26" Height="29" Width="106" Grid.Row="1"/>
+        <Button Command="{Binding SaveClick}" Content="Save changes" HorizontalAlignment="Left" Margin="557,365,0,0" VerticalAlignment="Top" FontSize="16" Click="Button_Click" Background="#FF4DDC26" Height="29" Width="106" Grid.Row="1"/>
         <TextBox HorizontalAlignment="Left" Margin="115,132,0,0" TextWrapping="Wrap" Text="{Binding Landlord.LastName}" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
         <Label Content="Firstname:" HorizontalAlignment="Left" Margin="45,88,0,0" VerticalAlignment="Top" Height="35" Width="70" FontSize="11" Grid.Row="1"/>
         <Label Content="Lastname:" HorizontalAlignment="Left" Margin="44,126,0,0" VerticalAlignment="Top" Height="30" Width="62" FontSize="11" RenderTransformOrigin="0.032,0.757" Grid.Row="1"/>
@@ -27,8 +27,8 @@
         <ListBox ItemsSource="{Binding AllProperties}" SelectedItem="{Binding Property}" DisplayMemberPath="Address" Margin="495,88,137,0" Height="268" VerticalAlignment="Top" RenderTransformOrigin="0.829,0.521" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged">
         </ListBox>
         <Label Content="All properties" Margin="495,62,137,0" VerticalAlignment="Top" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.Row="1"/>
-        <Button Content="LINK PROPERTY!" Command="{Binding LinkPropertyClick}" HorizontalAlignment="Left" Margin="464,366,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Button Content="UNLINK PROPERTY!" Command="{Binding UnlinkPropertyClick}" HorizontalAlignment="Left" Margin="579,366,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.Row="1"/>
+        <Button Content="LINK!" Command="{Binding LinkPropertyClick}" HorizontalAlignment="Left" Margin="495,356,0,0" VerticalAlignment="Top" Grid.Row="1" Click="Button_Click_1" Width="49"/>
+        <Button Content="UNLINK!" Command="{Binding UnlinkPropertyClick}" HorizontalAlignment="Left" Margin="495,376,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.Row="1"/>
 
 
     </Grid>

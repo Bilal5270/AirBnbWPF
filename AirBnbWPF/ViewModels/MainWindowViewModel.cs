@@ -33,6 +33,7 @@ namespace AirBnbWPF.ViewModels
         public ICommand LinkPropertyClick { get; set; }
         public ICommand OpenLandlordClick { get; set; }
         public ICommand UnlinkPropertyClick { get; set; }
+        public ICommand OpenUserClick { get; set; }
         public ICommand SaveClick { get; set; }
 
         AirBnbContext _db = new AirBnbContext();
@@ -62,6 +63,7 @@ namespace AirBnbWPF.ViewModels
             UnlinkPropertyClick = new RelayCommand(UnlinkProperty);
             LinkPropertyClick = new RelayCommand(LinkProperty);
             OpenLandlordClick = new RelayCommand(OpenLandlord);
+            OpenUserClick = new RelayCommand(OpenUser);
             SaveClick = new RelayCommand(Save);
         }
 
@@ -134,6 +136,22 @@ namespace AirBnbWPF.ViewModels
             ((LandlordsViewModel)popup.DataContext).Property = SelectedProperty;
             ((LandlordsViewModel)popup.DataContext).AllProperties = AllProperties;
             ((LandlordsViewModel)popup.DataContext).Db = _db;
+
+        }
+
+        private void OpenUser()
+        {
+            UsersView popup = new UsersView();
+            popup.Show();
+
+
+
+
+
+            ((UsersViewModel)popup.DataContext).User = SelectedUser;
+            ((UsersViewModel)popup.DataContext).Reservation = SelectedReservation;
+            ((UsersViewModel)popup.DataContext).AllReservations = AllReservations;
+            ((UsersViewModel)popup.DataContext).Db = _db;
 
         }
     }

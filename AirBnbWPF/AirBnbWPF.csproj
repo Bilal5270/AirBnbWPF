@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\UsersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\LandlordsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
