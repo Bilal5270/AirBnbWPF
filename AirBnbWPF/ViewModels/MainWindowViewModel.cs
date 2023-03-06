@@ -27,6 +27,7 @@ namespace AirBnbWPF.ViewModels
 
         public ObservableCollection<Reservation> AllReservations { get; set; }
         public ICommand NewPropertyClick { get; set; }
+        public ICommand NewLandlordClick { get; set; }
         public ICommand DeletePropertyClick { get; set; }
         public ICommand DeleteLandlordClick { get; set; }
         public ICommand OpenPropertyClick { get; set; }
@@ -34,7 +35,12 @@ namespace AirBnbWPF.ViewModels
         public ICommand OpenLandlordClick { get; set; }
         public ICommand UnlinkPropertyClick { get; set; }
         public ICommand OpenUserClick { get; set; }
+        public ICommand DeleteUserClick { get; set; }
+        public ICommand AddUserClick { get; set; }
         public ICommand SaveClick { get; set; }
+        public ICommand OpenReservationClick { get; set; }
+        public ICommand AddNewReservationClick { get; set; }
+        public ICommand DeleteReservationClick { get; set; }
 
         AirBnbContext _db = new AirBnbContext();
 
@@ -63,7 +69,13 @@ namespace AirBnbWPF.ViewModels
             UnlinkPropertyClick = new RelayCommand(UnlinkProperty);
             LinkPropertyClick = new RelayCommand(LinkProperty);
             OpenLandlordClick = new RelayCommand(OpenLandlord);
+            NewLandlordClick = new RelayCommand(AddNewLandlord);
             OpenUserClick = new RelayCommand(OpenUser);
+            DeleteUserClick = new RelayCommand(DeleteUser);
+            AddUserClick = new RelayCommand(AddNewUser);
+            OpenReservationClick = new RelayCommand(OpenReservation);
+            DeleteReservationClick = new RelayCommand(DeleteReservation);
+            AddNewReservationClick = new RelayCommand(AddNewReservation);
             SaveClick = new RelayCommand(Save);
         }
 
@@ -75,15 +87,43 @@ namespace AirBnbWPF.ViewModels
                 Landlord = SelectedLandlord
             });
         }
+        private void AddNewUser()
+        {
+            AllUsers.Add(new User
+            {
+                FirstName = "NEW USER",
+
+            });
+        }
+
+        private void AddNewLandlord()
+        {
+            AllLandlords.Add(new Landlord
+            {
+                FirstName = "NEW LANDLORD",
+                
+            });
+        }
+        private void AddNewReservation()
+        {
+            AllReservations.Add(new Reservation
+            {
+                StartDate = "NEW RESERVATION",
+
+            });
+        }
 
         private void LinkProperty()
         {
-          
-            SelectedLandlord.Properties.Add(SelectedProperty); 
-            
-           
+            if (SelectedLandlord.Properties.Contains(SelectedProperty))
+                return;
+            else
+                SelectedLandlord.Properties.Add(SelectedProperty);
 
-            
+
+
+
+
         }
 
         private void UnlinkProperty()
@@ -104,6 +144,15 @@ namespace AirBnbWPF.ViewModels
         {
             _db.Remove(SelectedLandlord);
         }
+        private void DeleteUser()
+        {
+            _db.Remove(SelectedUser);
+        }
+        private void DeleteReservation()
+        {
+            _db.Remove(SelectedReservation);
+        }
+
 
         private void Save()
         {
@@ -152,6 +201,19 @@ namespace AirBnbWPF.ViewModels
             ((UsersViewModel)popup.DataContext).Reservation = SelectedReservation;
             ((UsersViewModel)popup.DataContext).AllReservations = AllReservations;
             ((UsersViewModel)popup.DataContext).Db = _db;
+
+        }
+        private void OpenReservation()
+        {
+            ReservationsView popup = new ReservationsView();
+            popup.Show();
+
+
+
+
+
+            ((ReservationsViewModel)popup.DataContext).Reservation = SelectedReservation;
+            ((ReservationsViewModel)popup.DataContext).Db = _db;
 
         }
     }
