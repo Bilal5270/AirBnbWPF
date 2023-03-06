@@ -117,8 +117,12 @@ namespace AirBnbWPF.ViewModels
         {
             if (SelectedLandlord.Properties.Contains(SelectedProperty))
                 return;
-            else
+            var findProperty = AllLandlords.FirstOrDefault(AllLandlords => AllLandlords.Properties.Any(Property => Property == SelectedProperty));
+            if (findProperty == null)
                 SelectedLandlord.Properties.Add(SelectedProperty);
+            else
+                return;
+            //SelectedProperty.Landlord = SelectedLandlord;
 
 
 
@@ -130,9 +134,9 @@ namespace AirBnbWPF.ViewModels
         {
 
             SelectedLandlord.Properties.Remove(SelectedProperty);
-          
-            
-                
+            //SelectedProperty.Landlord = null;
+
+
 
         }
 
@@ -184,6 +188,7 @@ namespace AirBnbWPF.ViewModels
             ((LandlordsViewModel)popup.DataContext).Landlord = SelectedLandlord;
             ((LandlordsViewModel)popup.DataContext).Property = SelectedProperty;
             ((LandlordsViewModel)popup.DataContext).AllProperties = AllProperties;
+            ((LandlordsViewModel)popup.DataContext).AllLandlords = AllLandlords;
             ((LandlordsViewModel)popup.DataContext).Db = _db;
 
         }
