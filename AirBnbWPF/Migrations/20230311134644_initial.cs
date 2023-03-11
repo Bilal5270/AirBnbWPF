@@ -48,7 +48,7 @@ namespace AirBnbWPF.Migrations
                     PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AmountOfRooms = table.Column<int>(type: "int", nullable: false),
                     PricePerNight = table.Column<int>(type: "int", nullable: false),
-                    LandlordId = table.Column<int>(type: "int", nullable: false)
+                    LandlordId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,8 +57,7 @@ namespace AirBnbWPF.Migrations
                         name: "FK_Properties_Landlords_LandlordId",
                         column: x => x.LandlordId,
                         principalTable: "Landlords",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

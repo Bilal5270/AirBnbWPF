@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirBnbWPF.Migrations
 {
     [DbContext(typeof(AirBnbContext))]
-    [Migration("20230307071244_initial")]
+    [Migration("20230311134644_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,7 +78,7 @@ namespace AirBnbWPF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LandlordId")
+                    b.Property<int?>("LandlordId")
                         .HasColumnType("int");
 
                     b.Property<string>("PostalCode")
@@ -203,9 +203,7 @@ namespace AirBnbWPF.Migrations
                 {
                     b.HasOne("AirBnb.Model.Landlord", "Landlord")
                         .WithMany("Properties")
-                        .HasForeignKey("LandlordId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LandlordId");
 
                     b.Navigation("Landlord");
                 });

@@ -23,9 +23,6 @@
         <Label Content="Firstname:" HorizontalAlignment="Left" Margin="45,88,0,0" VerticalAlignment="Top" Height="35" Width="70" FontSize="11" Grid.Row="1"/>
         <Label Content="Lastname:" HorizontalAlignment="Left" Margin="44,126,0,0" VerticalAlignment="Top" Height="30" Width="62" FontSize="11" RenderTransformOrigin="0.032,0.757" Grid.Row="1"/>
         <Label Content="All reservations made" HorizontalAlignment="Right" Margin="0,62,357,0" VerticalAlignment="Top" Width="177" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.Row="1"/>
-        <Label Content="All reservations" Margin="0,62,125,0" VerticalAlignment="Top" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.Row="1" HorizontalAlignment="Right" Width="180"/>
-        <Button Content="LINK!" Command="{Binding LinkReservationClick}" HorizontalAlignment="Right" Margin="0,356,256,0" Grid.Row="1" Click="Button_Click_1" Width="49" Height="20" VerticalAlignment="Top"/>
-        <Button Content="UNLINK!" Command="{Binding UnlinkReservationClick}" HorizontalAlignment="Right" Margin="0,376,256,0" Click="Button_Click" Grid.Row="1" Height="20" VerticalAlignment="Top"/>
         <ListBox Margin="0,88,357,0" ItemsSource="{Binding User.Reservations}" SelectedItem="{Binding Reservation}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged" Grid.RowSpan="2" HorizontalAlignment="Right" Width="180" Height="268" VerticalAlignment="Top" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -41,21 +38,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Margin="0,88,125,0" ItemsSource="{Binding AllReservations}" SelectedItem="{Binding Reservation}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged" Grid.RowSpan="2" HorizontalAlignment="Right" Width="180" Height="268" VerticalAlignment="Top" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="Reservation {0} {1} | {2}">
-                                <Binding Path="Id"/>
-                                <Binding Path="StartDate"/>
-                                <Binding Path="EndDate"/>
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Button Command="{Binding OpenReservationClick}" Content="Edit" Margin="0,356,457,0" RenderTransformOrigin="-0.504,0.217" Background="#FF48E23D"  Foreground="White" Grid.Row="1" HorizontalAlignment="Right" Width="80" Height="29" VerticalAlignment="Top"/>
 
 
     </Grid>

@@ -1,6 +1,7 @@
 ﻿
 using AirBnb.Model;
 using AirBnbWPF.Model;
+using AirBnbWPF.Views;
 using Castle.Components.DictionaryAdapter;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,8 @@ namespace AirBnbWPF.ViewModels
 {
     public class UsersViewModel : INotifyPropertyChanged
     {
+        AirBnbContext _db = new AirBnbContext();
+
         private User _user;
         public User User { get => _user; set { _user = value; Notify("User"); } }
 
@@ -28,8 +31,7 @@ namespace AirBnbWPF.ViewModels
 
         // All ICommands
         public ICommand SaveClick { get; set; }
-        public ICommand UnlinkReservationClick { get; set; }
-        public ICommand LinkReservationClick { get; set; }
+        public ICommand OpenReservationClick { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -38,8 +40,7 @@ namespace AirBnbWPF.ViewModels
         {
             //All relaycommands bindings
             SaveClick = new RelayCommand(Save);
-            UnlinkReservationClick = new RelayCommand(UnlinkReservation);
-            LinkReservationClick = new RelayCommand(LinkReservation);
+            OpenReservationClick = new RelayCommand(OpenReservation);
         }
 
         // All functions
@@ -48,26 +49,21 @@ namespace AirBnbWPF.ViewModels
             Db.SaveChanges();
         }
 
-        private void LinkReservation()
+ 
+
+        private void OpenReservation()
         {
+            ReservationsView popup = new ReservationsView();
+            popup.Show();
 
-            User.Reservations.Add(Reservation);
-            //Db.Add(Property.Landlord);
-            //Reservation.User = User;
 
+
+
+
+            ((ReservationsViewModel)popup.DataContext).Reservation = Reservation;
+            ((ReservationsViewModel)popup.DataContext).Db = _db;
 
         }
-
-        private void UnlinkReservation()
-        {
-
-            User.Reservations.Remove(Reservation);
-            //Db.Remove(Property.Landlord);
-            //Reservation.User = null;
-
-
-        }
-
         private void Notify(string propertyName)
         {
             if (PropertyChanged != null)

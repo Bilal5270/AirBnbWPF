@@ -46,6 +46,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Command="{Binding OpenReservationClick}" Content="Edit" Margin="0,350,125,0" RenderTransformOrigin="-0.504,0.217" Background="#FF48E23D" Foreground="White" HorizontalAlignment="Right" Width="90" Height="29" VerticalAlignment="Top"/>
 
 
     </Grid>

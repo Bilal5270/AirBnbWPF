@@ -29,6 +29,8 @@
         <Button Content="LINK!" Command="{Binding LinkPropertyClick}" HorizontalAlignment="Right" Margin="0,356,256,0" VerticalAlignment="Top" Grid.Row="1" Click="Button_Click_1" Width="49"/>
         <Button Content="UNLINK!" Command="{Binding UnlinkPropertyClick}" HorizontalAlignment="Right" Margin="0,376,256,0" VerticalAlignment="Top" Click="Button_Click" Grid.Row="1"/>
         <ListBox ItemsSource="{Binding Landlord.Properties}" SelectedItem="{Binding Property}" DisplayMemberPath="Address" Margin="0,88,366,0" Height="268" VerticalAlignment="Top" RenderTransformOrigin="0.829,0.521" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged" HorizontalAlignment="Right" Width="168"/>
+        <Button Command="{Binding OpenPropertyClick}" Content="Edit" Margin="0,356,450,0" RenderTransformOrigin="-0.504,0.217" Background="#FF48E23D"  Foreground="White" Grid.Row="1" HorizontalAlignment="Right" Width="84" Height="29" VerticalAlignment="Top"/>
+        <Button Command="{Binding DeletePropertyClick}" Content="Remove" Margin="0,356,363,0" RenderTransformOrigin="-0.504,0.217" Background="#FFFB0000"  Grid.Row="1" HorizontalAlignment="Right" Width="87" Height="29" VerticalAlignment="Top"/>
 
 
     </Grid>

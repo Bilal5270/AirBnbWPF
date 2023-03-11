@@ -41,8 +41,8 @@ namespace AirBnbWPF.ViewModels
         public ICommand OpenReservationClick { get; set; }
         public ICommand AddNewReservationClick { get; set; }
         public ICommand DeleteReservationClick { get; set; }
-        public ICommand UnlinkReservationClick { get; set; }
-        public ICommand LinkReservationClick { get; set; }
+        //public ICommand UnlinkReservationClick { get; set; }
+        //public ICommand LinkReservationClick { get; set; }
 
         AirBnbContext _db = new AirBnbContext();
 
@@ -78,8 +78,8 @@ namespace AirBnbWPF.ViewModels
             OpenReservationClick = new RelayCommand(OpenReservation);
             DeleteReservationClick = new RelayCommand(DeleteReservation);
             AddNewReservationClick = new RelayCommand(AddNewReservation);
-            UnlinkReservationClick = new RelayCommand(UnlinkReservation);
-            LinkReservationClick = new RelayCommand(LinkReservation);
+            //UnlinkReservationClick = new RelayCommand(UnlinkReservation);
+            //LinkReservationClick = new RelayCommand(LinkReservation);
             SaveClick = new RelayCommand(Save);
         }
 
@@ -144,9 +144,10 @@ namespace AirBnbWPF.ViewModels
         private void UnlinkProperty()
         {
 
+            SelectedProperty.Landlord = null;
             SelectedLandlord.Properties.Remove(SelectedProperty);
 
-            SelectedProperty.Landlord = null;
+           
 
 
         }
@@ -224,6 +225,8 @@ namespace AirBnbWPF.ViewModels
             ((LandlordsViewModel)popup.DataContext).Property = SelectedProperty;
             ((LandlordsViewModel)popup.DataContext).AllProperties = AllProperties;
             ((LandlordsViewModel)popup.DataContext).AllLandlords = AllLandlords;
+            ((LandlordsViewModel)popup.DataContext).SelectedReservation = SelectedReservation;
+            ((LandlordsViewModel)popup.DataContext).AllReservations = AllReservations;
             ((LandlordsViewModel)popup.DataContext).Db = _db;
 
         }

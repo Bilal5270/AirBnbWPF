@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -39,15 +40,35 @@ namespace AirBnbWPF.ViewModels
         }
         private void Create()
         {
+            var matchingProperties = Db.Properties
+    .Where(property => property.Reservations.All(res => res.EndDate < res.StartDate || res.StartDate > res.EndDate));
 
-            AllReservations.Add(new Reservation
+            if (matchingProperties == null )
             {
-                StartDate = DateTime.Today,
-                EndDate = DateTime.Today,
-                User = User,
-                Property = Property,
+                return;
+            }
+            else
+            {
+                Reservation newReservation = new Reservation
+                {
+                    StartDate = DateTime.Today,
+                    EndDate = DateTime.Today,
+                    User = User,
+                    Property = Property,
 
-            });
+                };
+
+                if(matchingProperties == null)
+                {
+                    return;
+                }
+                else
+                {
+                    AllReservations.Add(newReservation);
+                }
+            }
+        
+
         }
         private void Save()
         {
