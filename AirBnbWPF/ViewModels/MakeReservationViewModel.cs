@@ -7,6 +7,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -20,6 +22,8 @@ namespace AirBnbWPF.ViewModels
         private ObservableCollection<Property> allProperties;
         private ObservableCollection<User> allUsers;
         private ObservableCollection<Reservation> allReservations;
+        private DateTime _startDateSetter { get; set; }
+        private DateTime _endDateSetter { get; set; }
         public Reservation Reservation { get => _reservation; set { _reservation = value; Notify("Reservation"); } }
         public User User { get => _user; set { _user = value; Notify("User"); } }
         public Property Property { get => _property; set { _property = value; Notify("Property"); } }
@@ -37,37 +41,57 @@ namespace AirBnbWPF.ViewModels
         {
             SaveClick = new RelayCommand(Save);
             CreateClick = new RelayCommand(Create);
+
+
         }
+       
+        public DateTime StartDateSetter
+        {
+            get { return _startDateSetter; }
+            set
+            {
+                _startDateSetter = value;
+                Notify("StartDateSetter");
+            }
+        }
+      
+        public DateTime EndDateSetter
+        {
+            get { return _endDateSetter; }
+            set
+            {
+                _startDateSetter = value;
+                Notify("EndDateSetter");
+            }
+        }
+
+
         private void Create()
         {
-            var matchingProperties = Db.Properties
-    .Where(property => property.Reservations.All(res => res.EndDate < res.StartDate || res.StartDate > res.EndDate));
+            var matchingProperties = Db.Properties.Where(property => property.Reservations.All(res => res.EndDate < res.StartDate || res.StartDate > res.EndDate));
 
-            if (matchingProperties == null )
-            {
-                return;
-            }
-            else
-            {
-                Reservation newReservation = new Reservation
+            
+
+            Reservation newReservation = new Reservation
                 {
-                    StartDate = DateTime.Today,
-                    EndDate = DateTime.Today,
+                    StartDate = StartDateSetter,
+                    EndDate = EndDateSetter,
                     User = User,
                     Property = Property,
 
                 };
 
-                if(matchingProperties == null)
-                {
-                    return;
-                }
-                else
-                {
-                    AllReservations.Add(newReservation);
-                }
-            }
-        
+            AllReservations.Add(newReservation);
+            //if (matchingProperties.Any())
+            //{
+               
+            //}
+            //else
+            //{
+            //    return;
+            //}
+
+
 
         }
         private void Save()

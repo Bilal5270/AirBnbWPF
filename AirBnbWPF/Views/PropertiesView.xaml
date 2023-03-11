@@ -47,6 +47,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Button Command="{Binding OpenReservationClick}" Content="Edit" Margin="0,350,125,0" RenderTransformOrigin="-0.504,0.217" Background="#FF48E23D" Foreground="White" HorizontalAlignment="Right" Width="90" Height="29" VerticalAlignment="Top"/>
+        <Button Command="{Binding DeleteReservationClick}" Content="Remove" Margin="0,350,38,0" RenderTransformOrigin="-0.504,0.217" Background="#FFFB0000" HorizontalAlignment="Right" Width="87" Height="29" VerticalAlignment="Top"/>
 
 
     </Grid>

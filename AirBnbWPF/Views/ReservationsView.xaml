@@ -46,7 +46,7 @@
         <DatePicker
     HorizontalAlignment="Left"
     SelectedDate="{Binding
-        Path=Reservation.StartDate,
+        Path= Reservation.StartDate,
         Mode=TwoWay,
         TargetNullValue={x:Static System:DateTime.Now}}"
     Margin="147,126,0,0" 

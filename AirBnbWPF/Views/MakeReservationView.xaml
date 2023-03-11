@@ -20,16 +20,17 @@
         <Label Content="Choose a date" Margin="69,45,533,0" VerticalAlignment="Top" Background="#FF403E3E" Foreground="#FFFFF6F6" Height="24"/>
         <DatePicker x:Name="StartDatePicker"
     HorizontalAlignment="Left"
-    SelectedDate="{Binding
-        Path=Reservation.StartDate,
-        Mode=OneWay,
-        TargetNullValue={x:Static System:DateTime.Now}}"
+    SelectedDate="{Binding StartDateSetter, TargetNullValue={x:Static System:DateTime.Now}}"
+    DisplayDate="{x:Static System:DateTime.Now}"
+    DisplayDateStart="{x:Static System:DateTime.Now}"
     Margin="147,77,0,0" 
     VerticalAlignment="Top" 
-    Width="120" DataContext="{Binding CreateClick}" FirstDayOfWeek="Monday" />
+    Width="120"  FirstDayOfWeek="Monday" IsDropDownOpen="True" />
         <DatePicker x:Name="EndDate"
             HorizontalAlignment="Left"
-            SelectedDate="{Binding Reservation.EndDate, Mode=TwoWay, TargetNullValue={x:Static System:DateTime.Now}}"
+            SelectedDate="{Binding EndDateSetter , TargetNullValue={x:Static System:DateTime.Now}}"
+            DisplayDate="{x:Static System:DateTime.Now}"
+            DisplayDateStart="{x:Static System:DateTime.Now}"
             Margin="147,110,0,0" 
             VerticalAlignment="Top" 
             Width="120" FirstDayOfWeek="Monday" />

@@ -32,6 +32,7 @@ namespace AirBnbWPF.ViewModels
         // All ICommands
         public ICommand SaveClick { get; set; }
         public ICommand OpenReservationClick { get; set; }
+        public ICommand DeleteReservationClick { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -41,6 +42,7 @@ namespace AirBnbWPF.ViewModels
             //All relaycommands bindings
             SaveClick = new RelayCommand(Save);
             OpenReservationClick = new RelayCommand(OpenReservation);
+            DeleteReservationClick = new RelayCommand(DeleteReservation);
         }
 
         // All functions
@@ -48,8 +50,11 @@ namespace AirBnbWPF.ViewModels
         {
             Db.SaveChanges();
         }
+        private void DeleteReservation()
+        {
+            Db.Remove(Reservation);
+        }
 
- 
 
         private void OpenReservation()
         {

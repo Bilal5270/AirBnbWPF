@@ -38,7 +38,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Command="{Binding OpenReservationClick}" Content="Edit" Margin="0,356,457,0" RenderTransformOrigin="-0.504,0.217" Background="#FF48E23D"  Foreground="White" Grid.Row="1" HorizontalAlignment="Right" Width="80" Height="29" VerticalAlignment="Top"/>
+        <Button Command="{Binding OpenReservationClick}" Content="Edit" Margin="0,356,447,0" RenderTransformOrigin="-0.504,0.217" Background="#FF48E23D"  Foreground="White" Grid.Row="1" HorizontalAlignment="Right" Width="90" Height="29" VerticalAlignment="Top"/>
+        <Button Command="{Binding DeleteReservationClick}" Content="Remove" Margin="0,356,0,0" RenderTransformOrigin="-0.504,0.217" Background="#FFFB0000" HorizontalAlignment="Center" Width="94" Height="29" VerticalAlignment="Top" Grid.RowSpan="2"/>
 
 
     </Grid>
