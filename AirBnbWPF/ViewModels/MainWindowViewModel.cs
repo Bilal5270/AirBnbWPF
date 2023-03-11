@@ -111,17 +111,9 @@ namespace AirBnbWPF.ViewModels
         private void AddNewReservation()
         {
             
-;
-
-
-           
 
             MakeReservationView popup = new MakeReservationView();
             popup.Show();
-
-
-
-
 
             ((MakeReservationViewModel)popup.DataContext).AllUsers = AllUsers;
             ((MakeReservationViewModel)popup.DataContext).AllProperties = AllProperties;
@@ -146,11 +138,6 @@ namespace AirBnbWPF.ViewModels
             {
                 return;
             }
-               
-
-
-
-
 
         }
 
@@ -162,30 +149,29 @@ namespace AirBnbWPF.ViewModels
             SelectedProperty.Landlord = null;
 
 
-
         }
 
-        private void LinkReservation()
-        {
+        //private void LinkReservation()
+        //{
     
-                SelectedUser.Reservations.Add(SelectedReservation);
-                SelectedProperty.Reservations.Add(SelectedReservation);
-            //Db.Add(Property.Landlord);
-            //Reservation.User = User;
+        //        SelectedUser.Reservations.Add(SelectedReservation);
+        //        SelectedProperty.Reservations.Add(SelectedReservation);
+        //    Db.Add(Property.Landlord);
+        //    Reservation.User = User;
 
 
-        }
+        //}
 
-        private void UnlinkReservation()
-        {
+        //private void UnlinkReservation()
+        //{
 
-            SelectedUser.Reservations.Remove(SelectedReservation);
-            SelectedProperty.Reservations.Remove(SelectedReservation);
-            //Db.Remove(Property.Landlord);
-            //Reservation.User = null;
+        //    SelectedUser.Reservations.Remove(SelectedReservation);
+        //    SelectedProperty.Reservations.Remove(SelectedReservation);
+        //    Db.Remove(Property.Landlord);
+        //    Reservation.User = null;
 
 
-        }
+        //}
 
         private void DeleteProperty()
         {
