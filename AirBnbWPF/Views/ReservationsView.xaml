@@ -51,13 +51,13 @@
         TargetNullValue={x:Static System:DateTime.Now}}"
     Margin="147,126,0,0" 
     VerticalAlignment="Top" 
-    Width="120" />
+    Width="120" FirstDayOfWeek="Monday" />
         <DatePicker
             HorizontalAlignment="Left"
             SelectedDate="{Binding Reservation.EndDate, Mode=TwoWay, TargetNullValue={x:Static System:DateTime.Now}}"
             Margin="147,161,0,0" 
             VerticalAlignment="Top" 
-            Width="120" />
+            Width="120" FirstDayOfWeek="Monday" />
 
 
     </Grid>
