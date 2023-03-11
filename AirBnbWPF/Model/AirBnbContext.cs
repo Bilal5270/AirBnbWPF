@@ -40,7 +40,7 @@ namespace AirBnbWPF.Model
             );
 
             modelBuilder.Entity<Property>().HasData(
-                new { Address = "Beeldhouwerpad 156 ", PostalCode = "1315KB", Id = 1, City = "Almere",  AmountOfRooms = 4, PricePerNight = 50, LandlordId = 1 },
+                new { Address = "Beeldhouwerpad 156 ", PostalCode = "1315KB", Id = 1, City = "Almere",  AmountOfRooms = 4, PricePerNight = 50, LandlordId = 1, ReservationId = 1 },
                 new { Address = "Kasteellaan 100", PostalCode = "8225LL", Id = 2, City = "Lelystad",  AmountOfRooms = 40, PricePerNight = 500 , LandlordId = 1}
             );
 
@@ -51,7 +51,8 @@ namespace AirBnbWPF.Model
             );
 
             modelBuilder.Entity<Reservation>().HasData(
-               new  { Id = 1, StartDate = "27-02-2023", EndDate = "31-03-2023", UserId = 1 , PropertyId = 1 }
+               new  { Id = 1, StartDate = new DateTime (2022, 6, 1), EndDate = new DateTime(2022, 7, 1), UserId = 1 , PropertyId = 1 },
+               new { Id = 2, StartDate = new DateTime(2022, 3, 7), EndDate = new DateTime(2022, 3, 8), UserId = 2, PropertyId = 2 }
 
            );
 

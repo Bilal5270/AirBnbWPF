@@ -76,5 +76,10 @@ namespace AirBnbWPF
         {
 
         }
+
+        private void ListBox_SelectionChanged_4(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

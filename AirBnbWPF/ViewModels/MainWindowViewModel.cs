@@ -41,6 +41,8 @@ namespace AirBnbWPF.ViewModels
         public ICommand OpenReservationClick { get; set; }
         public ICommand AddNewReservationClick { get; set; }
         public ICommand DeleteReservationClick { get; set; }
+        public ICommand UnlinkReservationClick { get; set; }
+        public ICommand LinkReservationClick { get; set; }
 
         AirBnbContext _db = new AirBnbContext();
 
@@ -76,6 +78,8 @@ namespace AirBnbWPF.ViewModels
             OpenReservationClick = new RelayCommand(OpenReservation);
             DeleteReservationClick = new RelayCommand(DeleteReservation);
             AddNewReservationClick = new RelayCommand(AddNewReservation);
+            UnlinkReservationClick = new RelayCommand(UnlinkReservation);
+            LinkReservationClick = new RelayCommand(LinkReservation);
             SaveClick = new RelayCommand(Save);
         }
 
@@ -106,11 +110,26 @@ namespace AirBnbWPF.ViewModels
         }
         private void AddNewReservation()
         {
-            AllReservations.Add(new Reservation
-            {
-                StartDate = "NEW RESERVATION",
+            
+;
 
-            });
+
+           
+
+            MakeReservationView popup = new MakeReservationView();
+            popup.Show();
+
+
+
+
+
+            ((MakeReservationViewModel)popup.DataContext).AllUsers = AllUsers;
+            ((MakeReservationViewModel)popup.DataContext).AllProperties = AllProperties;
+            ((MakeReservationViewModel)popup.DataContext).AllReservations= AllReservations;
+            ((MakeReservationViewModel)popup.DataContext).Reservation = SelectedReservation;
+            ((MakeReservationViewModel)popup.DataContext).User = SelectedUser;
+            ((MakeReservationViewModel)popup.DataContext).Property = SelectedProperty;
+            ((MakeReservationViewModel)popup.DataContext).Db = _db;
         }
 
         private void LinkProperty()
@@ -119,10 +138,15 @@ namespace AirBnbWPF.ViewModels
                 return;
             var findProperty = AllLandlords.FirstOrDefault(AllLandlords => AllLandlords.Properties.Any(Property => Property == SelectedProperty));
             if (findProperty == null)
+            {
                 SelectedLandlord.Properties.Add(SelectedProperty);
+                SelectedProperty.Landlord = SelectedLandlord;
+            }
             else
+            {
                 return;
-            //SelectedProperty.Landlord = SelectedLandlord;
+            }
+               
 
 
 
@@ -134,8 +158,31 @@ namespace AirBnbWPF.ViewModels
         {
 
             SelectedLandlord.Properties.Remove(SelectedProperty);
-            //SelectedProperty.Landlord = null;
 
+            SelectedProperty.Landlord = null;
+
+
+
+        }
+
+        private void LinkReservation()
+        {
+    
+                SelectedUser.Reservations.Add(SelectedReservation);
+                SelectedProperty.Reservations.Add(SelectedReservation);
+            //Db.Add(Property.Landlord);
+            //Reservation.User = User;
+
+
+        }
+
+        private void UnlinkReservation()
+        {
+
+            SelectedUser.Reservations.Remove(SelectedReservation);
+            SelectedProperty.Reservations.Remove(SelectedReservation);
+            //Db.Remove(Property.Landlord);
+            //Reservation.User = null;
 
 
         }
@@ -173,6 +220,8 @@ namespace AirBnbWPF.ViewModels
 
 
             ((PropertiesViewModel)popup.DataContext).Property = SelectedProperty;
+            ((PropertiesViewModel)popup.DataContext).Reservation = SelectedReservation;
+            ((PropertiesViewModel)popup.DataContext).AllReservations = AllReservations;
             ((PropertiesViewModel)popup.DataContext).Db = _db;
 
         }

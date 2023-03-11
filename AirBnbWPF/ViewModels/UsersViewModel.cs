@@ -53,6 +53,7 @@ namespace AirBnbWPF.ViewModels
 
             User.Reservations.Add(Reservation);
             //Db.Add(Property.Landlord);
+            //Reservation.User = User;
 
 
         }
@@ -62,7 +63,7 @@ namespace AirBnbWPF.ViewModels
 
             User.Reservations.Remove(Reservation);
             //Db.Remove(Property.Landlord);
-
+            //Reservation.User = null;
 
 
         }

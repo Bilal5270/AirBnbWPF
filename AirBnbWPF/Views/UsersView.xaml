@@ -18,15 +18,15 @@
         <TextBox HorizontalAlignment="Left" Margin="115,88,0,0" TextWrapping="Wrap" Text="{Binding User.FirstName}" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
 
 
-        <Button Command="{Binding SaveClick}" Content="Save changes" HorizontalAlignment="Left" Margin="557,365,0,0" VerticalAlignment="Top" FontSize="16" Click="Button_Click" Background="#FF4DDC26" Height="29" Width="106" Grid.Row="1"/>
+        <Button Command="{Binding SaveClick}" Content="Save changes" HorizontalAlignment="Right" Margin="0,365,137,0" FontSize="16" Click="Button_Click" Background="#FF4DDC26" Width="106" Grid.Row="1" Height="29" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="115,132,0,0" TextWrapping="Wrap" Text="{Binding User.LastName}" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
         <Label Content="Firstname:" HorizontalAlignment="Left" Margin="45,88,0,0" VerticalAlignment="Top" Height="35" Width="70" FontSize="11" Grid.Row="1"/>
         <Label Content="Lastname:" HorizontalAlignment="Left" Margin="44,126,0,0" VerticalAlignment="Top" Height="30" Width="62" FontSize="11" RenderTransformOrigin="0.032,0.757" Grid.Row="1"/>
-        <Label Content="All reservations made" HorizontalAlignment="Left" Margin="266,62,0,0" VerticalAlignment="Top" Width="177" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.Row="1"/>
-        <Label Content="All reservations" Margin="495,62,125,0" VerticalAlignment="Top" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.Row="1"/>
-        <Button Content="LINK!" Command="{Binding LinkReservationClick}" HorizontalAlignment="Left" Margin="495,356,0,0" VerticalAlignment="Top" Grid.Row="1" Click="Button_Click_1" Width="49"/>
-        <Button Content="UNLINK!" Command="{Binding UnlinkReservationClick}" HorizontalAlignment="Left" Margin="495,376,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.Row="1"/>
-        <ListBox Margin="263,88,357,78" ItemsSource="{Binding User.Reservations}" SelectedItem="{Binding Reservation}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged" Grid.RowSpan="2" >
+        <Label Content="All reservations made" HorizontalAlignment="Right" Margin="0,62,357,0" VerticalAlignment="Top" Width="177" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.Row="1"/>
+        <Label Content="All reservations" Margin="0,62,125,0" VerticalAlignment="Top" Background="#FF403E3E" Foreground="#FFFFF6F6" Grid.Row="1" HorizontalAlignment="Right" Width="180"/>
+        <Button Content="LINK!" Command="{Binding LinkReservationClick}" HorizontalAlignment="Right" Margin="0,356,256,0" Grid.Row="1" Click="Button_Click_1" Width="49" Height="20" VerticalAlignment="Top"/>
+        <Button Content="UNLINK!" Command="{Binding UnlinkReservationClick}" HorizontalAlignment="Right" Margin="0,376,256,0" Click="Button_Click" Grid.Row="1" Height="20" VerticalAlignment="Top"/>
+        <ListBox Margin="0,88,357,0" ItemsSource="{Binding User.Reservations}" SelectedItem="{Binding Reservation}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged" Grid.RowSpan="2" HorizontalAlignment="Right" Width="180" Height="268" VerticalAlignment="Top" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -41,7 +41,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Margin="495,88,125,78" ItemsSource="{Binding AllReservations}" SelectedItem="{Binding Reservation}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged" Grid.RowSpan="2" >
+        <ListBox Margin="0,88,125,0" ItemsSource="{Binding AllReservations}" SelectedItem="{Binding Reservation}" Foreground="Black" SelectionChanged="ListBox_SelectionChanged" Grid.RowSpan="2" HorizontalAlignment="Right" Width="180" Height="268" VerticalAlignment="Top" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>

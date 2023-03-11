@@ -30,6 +30,22 @@
         <TextBox HorizontalAlignment="Left" Margin="431,115,0,0" TextWrapping="Wrap" Text="{Binding Property.Landlord.LastName}" VerticalAlignment="Top" Width="120"/>
         <Label Content="Landlord's id:" HorizontalAlignment="Left" Margin="355,143,0,0" VerticalAlignment="Top" Height="22" Width="82" FontSize="11"/>
         <TextBox HorizontalAlignment="Left" Margin="431,147,0,0" TextWrapping="Wrap" Text="{Binding Property.Landlord.Id}" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1"/>
+        <Label Content="All reservations" Margin="585,57,35,0" VerticalAlignment="Top" Background="#FF403E3E" Foreground="#FFFFF6F6"/>
+        <ListBox Margin="585,82,35,84" ItemsSource="{Binding Property.Reservations}" SelectedItem="{Binding Reservation}" Foreground="Black"  >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="Reservation {0} {1} | {2}">
+                                <Binding Path="Id"/>
+                                <Binding Path="StartDate"/>
+                                <Binding Path="EndDate"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
 
     </Grid>

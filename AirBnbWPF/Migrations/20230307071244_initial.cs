@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -66,8 +67,8 @@ namespace AirBnbWPF.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StartDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EndDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     PropertyId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -93,8 +94,8 @@ namespace AirBnbWPF.Migrations
                 columns: new[] { "Id", "FirstName", "LastName" },
                 values: new object[,]
                 {
-                    { 1, "Karim", "NoClue" },
-                    { 2, "Boze", "Verhuurder" }
+                    { 1, "Karim", "Ayachi" },
+                    { 2, "Yousry", "Yousef" }
                 });
 
             migrationBuilder.InsertData(
@@ -119,7 +120,12 @@ namespace AirBnbWPF.Migrations
             migrationBuilder.InsertData(
                 table: "Reservations",
                 columns: new[] { "Id", "EndDate", "PropertyId", "StartDate", "UserId" },
-                values: new object[] { 1, "31-03-2023", 1, "27-02-2023", 1 });
+                values: new object[] { 1, new DateTime(2022, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2022, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 });
+
+            migrationBuilder.InsertData(
+                table: "Reservations",
+                columns: new[] { "Id", "EndDate", "PropertyId", "StartDate", "UserId" },
+                values: new object[] { 2, new DateTime(2022, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, new DateTime(2022, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Properties_LandlordId",

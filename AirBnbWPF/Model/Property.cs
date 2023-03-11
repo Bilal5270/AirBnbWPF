@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AirBnbWPF.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -26,6 +28,12 @@ namespace AirBnb.Model
 
         public int PricePerNight { get => _pricePerNight; set { _pricePerNight = value; Notify("PricePerNight"); } }
 
+        public virtual ObservableCollection<Reservation> Reservations { get; set; }
+
+        public Property()
+        {
+            Reservations = new ObservableCollection<Reservation>();
+        }
 
 
         public  virtual Landlord? Landlord { get; set; }
