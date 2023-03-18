@@ -19,6 +19,7 @@ namespace AirBnbWPF.ViewModels
 
         public ReservationsViewModel()
         {
+
             SaveClick = new RelayCommand(Save);
         }
 
