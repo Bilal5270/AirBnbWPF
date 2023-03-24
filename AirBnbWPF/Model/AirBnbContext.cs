@@ -16,7 +16,7 @@ namespace AirBnbWPF.Model
         public DbSet<Landlord> Landlords { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Property> Properties { get; set; }
-        //DbSet<Listing> Listings { get; set; }
+        
         public DbSet<Reservation> Reservations { get; set; }
 
 

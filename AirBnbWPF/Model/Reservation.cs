@@ -21,9 +21,9 @@ namespace AirBnbWPF.Model
 
         public DateTime EndDate { get => _endDate; set { _endDate = value; Notify("EndDate"); } }
 
-        public virtual User User { get; set; }
+        public virtual User? User { get; set; }
 
-        public virtual Property Property { get; set; }
+        public virtual Property? Property { get; set; }
 
         public string StartDateAsString { get => StartDate.ToShortDateString(); }
         public string EndDateAsString { get => EndDate.ToShortDateString(); }

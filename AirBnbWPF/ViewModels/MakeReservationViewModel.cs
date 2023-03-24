@@ -60,7 +60,7 @@ namespace AirBnbWPF.ViewModels
             get { return _endDateSetter; }
             set
             {
-                _startDateSetter = value;
+                _endDateSetter = value;
                 Notify("EndDateSetter");
             }
         }
@@ -68,11 +68,19 @@ namespace AirBnbWPF.ViewModels
 
         private void Create()
         {
-            var matchingProperties = Db.Properties.Where(property => property.Reservations.All(res => res.EndDate < res.StartDate || res.StartDate > res.EndDate));
+            
+            var reservations = AllReservations.Where(reservation => reservation.Property == Property && ((EndDateSetter >= reservation.StartDate && EndDateSetter <= reservation.EndDate) || (StartDateSetter >= reservation.StartDate && StartDateSetter <= reservation.EndDate)));
+
+          
 
             
-
-            Reservation newReservation = new Reservation
+            if (reservations.Any())
+            {
+                return;
+            }
+            else
+            {
+                Reservation newReservation = new Reservation
                 {
                     StartDate = StartDateSetter,
                     EndDate = EndDateSetter,
@@ -80,16 +88,8 @@ namespace AirBnbWPF.ViewModels
                     Property = Property,
 
                 };
-
-            AllReservations.Add(newReservation);
-            //if (matchingProperties.Any())
-            //{
-               
-            //}
-            //else
-            //{
-            //    return;
-            //}
+                AllReservations.Add(newReservation);
+            }
 
 
 

@@ -176,7 +176,9 @@ namespace AirBnbWPF.ViewModels
 
         private void DeleteProperty()
         {
+            SelectedProperty.Landlord = null;
             _db.Remove(SelectedProperty);
+            
         }
         private void DeleteLandlord()
         {
@@ -188,7 +190,10 @@ namespace AirBnbWPF.ViewModels
         }
         private void DeleteReservation()
         {
+            SelectedReservation.User = null;
+            SelectedReservation.Property = null;
             _db.Remove(SelectedReservation);
+          
         }
 
 
